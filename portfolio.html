@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sahibzada Sameer | Portfolio</title>
+<meta name="description" content="Portfolio van Sahibzada Sameer, MBO 4 Software Development student in Amsterdam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap">
+<style>
+/* Layout: sticky nav, charcoal hero with the CV's curved corner, interactive skills that light up matching projects, dark contact band. One teal accent. */
+:root{
+  --bg:#f3f4f6; --surface:#ffffff; --ink:#1f2127; --muted:#565a64; --line:#d6d9df;
+  --chip:#e6e8ed; --accent:#17756f; --accent-soft:#d9eeec; --accent-ink:#ffffff;
+  --hero:#2b2d33; --hero-ink:#ffffff; --hero-muted:#c9cbd2; --hero-accent:#86d9d1; --hero-line:rgba(255,255,255,.2);
+  --nav-bg:rgba(243,244,246,.86);
+  --shadow:0 1px 2px rgba(20,22,28,.06),0 8px 24px rgba(20,22,28,.06);
+  --display:'Space Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --body:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#131418; --surface:#1c1e23; --ink:#eceef2; --muted:#a3a7b1; --line:#30333b;
+    --chip:#2a2d34; --accent:#6fd0c7; --accent-soft:#1d3433; --accent-ink:#0d1a19;
+    --hero:#0c0d10; --nav-bg:rgba(19,20,24,.86);
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#131418; --surface:#1c1e23; --ink:#eceef2; --muted:#a3a7b1; --line:#30333b;
+  --chip:#2a2d34; --accent:#6fd0c7; --accent-soft:#1d3433; --accent-ink:#0d1a19;
+  --hero:#0c0d10; --nav-bg:rgba(19,20,24,.86);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.01em}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin-inline:auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+.skip{position:absolute;left:-999px;top:8px;background:var(--accent);color:var(--accent-ink);padding:8px 14px;border-radius:8px;z-index:100}
+.skip:focus{left:12px}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:50;background:var(--nav-bg);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:16px;min-height:60px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.05rem;color:var(--ink);text-decoration:none;display:flex;align-items:center;gap:10px;white-space:nowrap}
+.mark{width:32px;height:32px;border-radius:50%;background:var(--hero);color:#fff;display:grid;place-items:center;font-size:.78rem;letter-spacing:.02em}
+.links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.links::-webkit-scrollbar{display:none}
+.links a{font-size:.9rem;font-weight:500;color:var(--muted);text-decoration:none;padding:8px 12px;border-radius:999px;white-space:nowrap}
+.links a:hover{color:var(--ink);background:var(--chip)}
+.links a[aria-current="true"]{color:var(--accent-ink);background:var(--accent)}
+.theme{flex:none;width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--ink);cursor:pointer;display:grid;place-items:center}
+.theme:hover{border-color:var(--accent);color:var(--accent)}
+@media (max-width:760px){.brand span.full{display:none}}
+
+/* hero */
+.hero{background:var(--hero);color:var(--hero-ink);border-radius:0 0 clamp(56px,13vw,160px) 0;position:relative;overflow:hidden;padding-block:clamp(40px,8vw,96px) clamp(36px,6vw,64px)}
+.hero::after{content:"";position:absolute;right:-12%;top:-30%;width:min(60vw,560px);aspect-ratio:1;border-radius:50%;border:1px solid var(--hero-line);box-shadow:0 0 0 48px rgba(255,255,255,.02),0 0 0 96px rgba(255,255,255,.015);pointer-events:none}
+.hero .wrap{position:relative;z-index:1}
+.status{display:inline-flex;align-items:center;gap:10px;padding:6px 14px 6px 10px;border:1px solid var(--hero-line);border-radius:999px;font-size:.85rem;color:#eef0f3}
+.dot{width:9px;height:9px;border-radius:50%;background:#6be3b3;box-shadow:0 0 0 4px rgba(107,227,179,.18)}
+.hero h1{font-size:clamp(2.4rem,8vw,5.2rem);line-height:1.02;font-weight:700;margin-top:22px;letter-spacing:-.025em}
+.role{font-family:var(--mono);font-size:clamp(.82rem,2vw,1rem);color:var(--hero-accent);margin-top:16px;letter-spacing:.02em}
+.pitch{max-width:58ch;margin-top:22px;font-size:clamp(1rem,2.2vw,1.18rem);color:#e3e5ea}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 22px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid transparent}
+.btn.primary{background:var(--hero-accent);color:#0d1a19}
+.btn.primary:hover{background:#a3e6df}
+.btn.ghost{border-color:var(--hero-line);color:#fff}
+.btn.ghost:hover{background:rgba(255,255,255,.08)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px 32px;margin-top:clamp(36px,6vw,64px);padding-top:26px;border-top:1px solid var(--hero-line)}
+.facts div{min-width:0}
+.facts dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--hero-accent)}
+.facts dd{margin:5px 0 0;font-size:.95rem;color:#f1f2f5}
+
+/* sections */
+section.s{padding-block:clamp(36px,6vw,72px)}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;margin-bottom:28px}
+.sec-head h2{font-size:clamp(1.6rem,4vw,2.3rem);font-weight:700}
+.sec-head .tag{font-family:var(--mono);font-size:.76rem;color:var(--muted);letter-spacing:.03em}
+.about{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:clamp(24px,5vw,56px);align-items:start}
+.about p{font-size:1.06rem}
+.about p+p{margin-top:16px}
+.quote{border-left:3px solid var(--accent);padding:4px 0 4px 20px;font-family:var(--display);font-size:1.25rem;line-height:1.4;font-weight:500}
+.quote small{display:block;margin-top:10px;font-family:var(--mono);font-size:.74rem;letter-spacing:.04em;color:var(--muted);font-weight:400}
+@media (max-width:760px){.about{grid-template-columns:minmax(0,1fr)}}
+
+/* skills */
+.hint{font-size:.92rem;color:var(--muted);margin:-12px 0 22px}
+.skill-groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.group{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px;min-width:0}
+.group h3{font-size:1rem;font-weight:600;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{display:inline-flex;align-items:center;min-height:34px;padding:0 14px;border-radius:999px;background:var(--chip);color:var(--ink);font:500 .88rem var(--body);border:1px solid transparent}
+button.chip{cursor:pointer;background:var(--chip)}
+button.chip:hover{border-color:var(--accent)}
+button.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink)}
+.chip.plain{color:var(--muted)}
+.live{min-height:1.5em;margin-top:16px;font-family:var(--mono);font-size:.8rem;color:var(--accent)}
+
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:18px}
+.card{min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px;box-shadow:var(--shadow);transition:opacity .2s,transform .2s,border-color .2s}
+.card h3{font-size:1.3rem;font-weight:700}
+.kind{font-family:var(--mono);font-size:.72rem;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)}
+.card p{color:var(--muted);font-size:.96rem}
+.me{display:flex;gap:10px;align-items:baseline;padding-top:12px;margin-top:2px;border-top:1px dashed var(--line);font-size:.92rem}
+.me b{font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.tag-s{font-family:var(--mono);font-size:.74rem;padding:3px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent)}
+.school{margin-top:36px}
+.school h3{font-size:1.1rem;font-weight:600;margin-bottom:14px}
+.school-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:10px}
+.school-list li{min-width:0;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:var(--surface);font-size:.92rem;color:var(--muted);transition:opacity .2s,border-color .2s}
+.school-list b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px}
+.dim{opacity:.32}
+.hit{border-color:var(--accent)!important}
+
+/* background */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px;align-items:start}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:24px;min-width:0}
+.panel h3{font-size:1.1rem;font-weight:600;margin-bottom:16px}
+.job-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.job-top strong{font-family:var(--display);font-size:1.15rem}
+.when{font-family:var(--mono);font-size:.78rem;color:var(--muted)}
+.sub{color:var(--muted);font-size:.92rem;margin-top:2px}
+.bul{margin-top:14px;display:grid;gap:9px}
+.bul li{position:relative;padding-left:20px;font-size:.96rem}
+.bul li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:2px;background:var(--accent)}
+.tl li{display:grid;grid-template-columns:112px minmax(0,1fr);gap:14px;padding:12px 0;border-bottom:1px solid var(--line)}
+.tl li:first-child{padding-top:0}
+.tl li:last-child{border-bottom:0;padding-bottom:0}
+.tl .when{padding-top:3px}
+.tl .now{color:var(--accent);font-weight:500}
+.tl strong{font-weight:600}
+.tl small{display:block;color:var(--muted);font-size:.88rem}
+@media (max-width:480px){.tl li{grid-template-columns:minmax(0,1fr);gap:2px}}
+
+/* contact */
+.contact{background:var(--hero);color:#fff;border-radius:clamp(40px,10vw,120px) 0 0 0;padding-block:clamp(40px,7vw,80px);margin-top:clamp(20px,4vw,48px)}
+.contact h2{font-size:clamp(1.8rem,5vw,3rem);font-weight:700}
+.contact p.lead{margin-top:12px;color:var(--hero-muted);max-width:50ch}
+.c-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:30px;max-width:780px}
+.c-item{min-width:0;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px;border:1px solid var(--hero-line);border-radius:16px;background:rgba(255,255,255,.04)}
+.c-item .lab{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--hero-accent)}
+.c-item .val{font-size:1.02rem;font-weight:500;overflow-wrap:anywhere;color:#fff;text-decoration:none;display:block;margin-top:2px}
+.copy{flex:none;font:inherit;font-size:.82rem;font-weight:600;color:var(--hero-accent);background:transparent;border:1px solid var(--hero-accent);border-radius:999px;padding:0 16px;min-height:44px;cursor:pointer}
+.copy:hover{background:rgba(134,217,209,.14)}
+footer{padding-block:26px 34px;color:var(--hero-muted);font-size:.85rem;background:var(--hero)}
+footer .wrap{border-top:1px solid var(--hero-line);padding-top:20px}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+@media print{.nav,.theme,.cta{display:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Naar de inhoud</a>
+
+<nav class="nav" aria-label="Hoofdmenu">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top"><span class="mark" aria-hidden="true">SS</span><span class="full">Sahibzada Sameer</span></a>
+    <div class="links" id="links">
+      <a href="#over-mij">Over mij</a>
+      <a href="#skills">Skills</a>
+      <a href="#projecten">Projecten</a>
+      <a href="#achtergrond">Achtergrond</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="theme" id="theme" type="button" aria-label="Wissel tussen licht en donker">
+      <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+    </button>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <span class="status"><i class="dot" aria-hidden="true"></i>Op zoek naar een stage in software development</span>
+    <h1>Sahibzada Sameer</h1>
+    <p class="role">Junior Software Ontwikkelaar · Amsterdam</p>
+    <p class="pitch">MBO 4 Software Development student. Ik bouw webapplicaties met PHP, Laravel en Python, werk in Scrum-teams en wil op mijn stage echt meebouwen aan een product.</p>
+    <div class="cta">
+      <a class="btn primary" href="#projecten">Bekijk mijn projecten</a>
+      <a class="btn ghost" href="#contact">Contact</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Opleiding</dt><dd>MBO 4 Software Development, ROC Amsterdam Zuidoost</dd></div>
+      <div><dt>Talen</dt><dd>Nederlands, English, Urdu</dd></div>
+      <div><dt>Buiten school</dt><dd>Padel, gamen, software</dd></div>
+      <div><dt>Werk</dt><dd>Haqs International, telefoonwinkel</dd></div>
+    </dl>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="s" id="over-mij">
+    <div class="wrap">
+      <div class="sec-head"><h2>Over mij</h2></div>
+      <div class="about">
+        <div>
+          <p>Ik ben een gemotiveerde MBO 4 Software Development student aan het ROC van Amsterdam met ervaring in PHP, Laravel, Python, TypeScript en Docker.</p>
+          <p>Naast school werk ik bij een telefoonwinkel. Daar leerde ik communiceren met klanten, problemen oplossen en resultaatgericht werken. Met padel en gamen leer ik samenwerken en scherp blijven onder druk.</p>
+          <p>Ik ben leergierig en gestructureerd, en ik zoek een plek waar ik mijn skills kan inzetten en verder kan groeien.</p>
+        </div>
+        <p class="quote">Leergierig, gestructureerd en een teamspeler.<small>Hoe ik mezelf omschrijf</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="skills" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Skills</h2><span class="tag">Wat ik gebruik op school en in projecten</span></div>
+      <p class="hint">Klik op een skill om te zien in welke projecten en opdrachten ik hem heb gebruikt.</p>
+      <div class="skill-groups">
+        <div class="group">
+          <h3>Backend</h3>
+          <div class="chips">
+            <button class="chip" type="button" data-skill="php" aria-pressed="false">PHP</button>
+            <button class="chip" type="button" data-skill="laravel" aria-pressed="false">Laravel</button>
+            <button class="chip" type="button" data-skill="python" aria-pressed="false">Python</button>
+            <button class="chip" type="button" data-skill="flask" aria-pressed="false">Flask</button>
+            <button class="chip" type="button" data-skill="phpunit" aria-pressed="false">PHPUnit</button>
+            <button class="chip" type="button" data-skill="mysql" aria-pressed="false">MySQL</button>
+            <button class="chip" type="button" data-skill="sqlite" aria-pressed="false">SQLite</button>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Frontend</h3>
+          <div class="chips">
+            <span class="chip plain">HTML</span>
+            <span class="chip plain">CSS</span>
+            <button class="chip" type="button" data-skill="typescript" aria-pressed="false">TypeScript</button>
+            <button class="chip" type="button" data-skill="blazor" aria-pressed="false">Blazor (C#)</button>
+          </div>
+        </div>
+        <div class="group">
+          <h3>Tools en werkwijze</h3>
+          <div class="chips">
+            <button class="chip" type="button" data-skill="docker" aria-pressed="false">Docker</button>
+            <button class="chip" type="button" data-skill="scrum" aria-pressed="false">Scrum</button>
+            <button class="chip" type="button" data-skill="trello" aria-pressed="false">Trello</button>
+            <span class="chip plain">Git en GitLab</span>
+          </div>
+        </div>
+      </div>
+      <p class="live" id="live" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section class="s" id="projecten" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Projecten</h2><span class="tag">Groepsprojecten en eigen opdrachten</span></div>
+      <div class="projects">
+        <article class="card item" data-tags="php laravel scrum">
+          <p class="kind">Beroepsproject · Groep</p>
+          <h3>ZZP Portal</h3>
+          <p>Een Laravel-applicatie voor ZZP'ers, gebouwd voor freelance developers.</p>
+          <p class="me"><b>Mijn rol</b><span>Scrum Master</span></p>
+          <div class="tags"><span class="tag-s">Laravel</span><span class="tag-s">PHP</span><span class="tag-s">Scrum</span></div>
+        </article>
+        <article class="card item" data-tags="scrum trello crud">
+          <p class="kind">Beroepsproject jaar 2 · Groep van 4</p>
+          <h3>Toeslagen app</h3>
+          <p>Een CRUD-applicatie voor Belastingdienst Toeslagen, met huurtoeslag, zorgtoeslag en kinderopvangtoeslag.</p>
+          <p class="me"><b>Werkwijze</b><span>Scrum met een Trello-bord</span></p>
+          <div class="tags"><span class="tag-s">CRUD</span><span class="tag-s">Scrum</span><span class="tag-s">Trello</span></div>
+        </article>
+        <article class="card item" data-tags="python flask">
+          <p class="kind">Schoolopdracht · Python</p>
+          <h3>Voetbal Score Tracker</h3>
+          <p>Een Flask-webapp die voetbalscores ophaalt via de API-Football en toont.</p>
+          <p class="me"><b>Techniek</b><span>Python, Flask, externe API</span></p>
+          <div class="tags"><span class="tag-s">Python</span><span class="tag-s">Flask</span><span class="tag-s">API-Football</span></div>
+        </article>
+      </div>
+
+      <div class="school">
+        <h3>Ook gedaan op school</h3>
+        <ul class="school-list">
+          <li class="item" data-tags="laravel php mysql sqlite"><b>Laravel</b>Migrations, Query Builder, Eloquent-relaties, eager loading (N+1) en authenticatie</li>
+          <li class="item" data-tags="phpunit php"><b>PHPUnit</b>Unit tests met mocks en DataProviders</li>
+          <li class="item" data-tags="docker"><b>Docker</b>Dockerfiles, volumes, bind mounts en Docker Compose</li>
+          <li class="item" data-tags="typescript"><b>TypeScript</b>Types, type narrowing en union types</li>
+          <li class="item" data-tags="python"><b>Python</b>Bestanden lezen en schrijven, conceptdocument voor WeatherWise</li>
+          <li class="item" data-tags="blazor"><b>Blazor</b>Componenten voor een pinpas-opdracht</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="achtergrond" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><h2>Achtergrond</h2></div>
+      <div class="two">
+        <div class="panel">
+          <h3>Werkervaring</h3>
+          <div class="job-top"><strong>Haqs International</strong><span class="when">2024 - heden</span></div>
+          <p class="sub">Telefoonwinkel · Klantenservice en verkoop</p>
+          <ul class="bul">
+            <li>Klanten helpen met telefoonproblemen, zoals software-problemen</li>
+            <li>Accessoires verkopen aan klanten in de winkel</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>Opleiding</h3>
+          <ul class="tl">
+            <li><span class="when now">2024 - heden</span><span><strong>MBO College Zuidoost</strong><small>MBO 4 Software Development, ROC Amsterdam</small></span></li>
+            <li><span class="when">2019 - 2024</span><strong>Montessori Lyceum Oostpoort</strong></li>
+            <li><span class="when">2018 - 2019</span><strong>OPF School</strong></li>
+            <li><span class="when">2009 - 2018</span><strong>Mount Sinai School</strong></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Laten we kennismaken</h2>
+    <p class="lead">Ik zoek een stage waar ik kan meebouwen en veel kan leren. Stuur gerust een bericht of bel.</p>
+    <div class="c-grid">
+      <div class="c-item">
+        <div><span class="lab">E-mail</span><a class="val" id="v-mail" href="mailto:sahibzadasameer89@gmail.com">sahibzadasameer89@gmail.com</a></div>
+        <button class="copy" type="button" data-target="v-mail">Kopieer</button>
+      </div>
+      <div class="c-item">
+        <div><span class="lab">Telefoon</span><a class="val" id="v-tel" href="tel:+31687159019">+31687159019</a></div>
+        <button class="copy" type="button" data-target="v-tel">Kopieer</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Sahibzada Sameer · Amsterdam · Rijbewijs B in opleiding</div>
+</footer>
+
+<script>
+(function(){
+  /* theme toggle */
+  var root=document.documentElement;
+  try{var saved=localStorage.getItem('theme');if(saved==='light'||saved==='dark')root.setAttribute('data-theme',saved);}catch(e){}
+  document.getElementById('theme').addEventListener('click',function(){
+    var cur=root.getAttribute('data-theme');
+    if(!cur){cur=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}
+    var next=cur==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    try{localStorage.setItem('theme',next);}catch(e){}
+  });
+
+  /* skill filter */
+  var skills=[].slice.call(document.querySelectorAll('button[data-skill]'));
+  var items=[].slice.call(document.querySelectorAll('.item'));
+  var live=document.getElementById('live');
+  var active=null;
+  function apply(){
+    var n=0;
+    items.forEach(function(it){
+      var tags=(it.getAttribute('data-tags')||'').split(' ');
+      var match=active&&tags.indexOf(active)>-1;
+      it.classList.toggle('dim',!!active&&!match);
+      it.classList.toggle('hit',!!match);
+      if(match)n++;
+    });
+    skills.forEach(function(b){b.setAttribute('aria-pressed',String(b.getAttribute('data-skill')===active));});
+    if(active){
+      var label=skills.filter(function(b){return b.getAttribute('data-skill')===active;})[0].textContent;
+      live.textContent=label+': gebruikt in '+n+(n===1?' project of opdracht':' projecten en opdrachten');
+    }else{live.textContent='';}
+  }
+  skills.forEach(function(b){
+    b.addEventListener('click',function(){
+      var s=b.getAttribute('data-skill');
+      active=active===s?null:s;
+      apply();
+      if(active){var p=document.getElementById('projecten');if(p&&window.matchMedia('(max-width:760px)').matches){p.scrollIntoView({behavior:'smooth'});}}
+    });
+  });
+
+  /* copy buttons */
+  function selectText(el){try{var r=document.createRange();r.selectNodeContents(el);var s=window.getSelection();s.removeAllRanges();s.addRange(r);}catch(e){}}
+  [].slice.call(document.querySelectorAll('.copy')).forEach(function(b){
+    b.addEventListener('click',function(){
+      var el=document.getElementById(b.getAttribute('data-target'));
+      var txt=el.textContent.trim();
+      var done=function(){var old=b.textContent;b.textContent='Gekopieerd';setTimeout(function(){b.textContent=old;},1500);};
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,function(){selectText(el);});}
+      else{selectText(el);}
+    });
+  });
+
+  /* active nav link */
+  var links=[].slice.call(document.querySelectorAll('#links a'));
+  var ids=links.map(function(a){return a.getAttribute('href').slice(1);});
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){
+          links.forEach(function(a){a.removeAttribute('aria-current');});
+          var l=links[ids.indexOf(e.target.id)];if(l)l.setAttribute('aria-current','true');
+        }
+      });
+    },{rootMargin:'-40% 0px -55% 0px'});
+    ids.forEach(function(id){var s=document.getElementById(id);if(s)io.observe(s);});
+  }
+})();
+</script>
+</body>
+</html>
